@@ -31,13 +31,26 @@ class loginPresenter {
             if response.success {
                 UserDefaults.standard.set(username, forKey: "username")
                 UserDefaults.standard.synchronize()
-                self.delegate?.loginUser()
+                self.createSession()
             } else {
                 self.delegate?.showMessage(msg: response.status_message ?? "Inicio de sesión fallido.")
             }
         } failure: { error in
             //Show Alert
             print(error ?? "Error")
+        }
+        //createSession()
+    }
+    
+    public func createSession() {
+        APIProvider.shared.createSession {
+            response in
+            UserDefaults.standard.set(response.session_id, forKey: "session")
+            UserDefaults.standard.synchronize()
+            self.delegate?.loginUser()
+        } failure: { error in
+            //show Alert
+            print(error!)
         }
     }
     

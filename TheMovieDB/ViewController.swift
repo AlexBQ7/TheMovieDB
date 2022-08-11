@@ -18,6 +18,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.setViewDelegate(delegate: self)
+        if UserDefaults.standard.string(forKey: "session") != nil {
+            performSegue(withIdentifier: "homeSegue", sender: self)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.setHidesBackButton(true, animated: false)
     }
 
     @IBAction func login(_ sender: Any) {
@@ -28,10 +35,10 @@ class ViewController: UIViewController {
             case (true, false):
                 labelError.text = "Username is missing."
             case (false, true):
-                labelError.text = "Password id missing."
+                labelError.text = "Password is missing."
             case (false, false):
-                //presenter.login(username: username, password: password)
-                performSegue(withIdentifier: "homeSegue", sender: self)
+                presenter.login(username: username, password: password)
+                //performSegue(withIdentifier: "homeSegue", sender: self)
                 break
             }
         }
@@ -41,10 +48,14 @@ class ViewController: UIViewController {
 
 extension ViewController: LoginPresenterDelegate {
     func loginUser() {
-        performSegue(withIdentifier: "homeSegue", sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "homeSegue", sender: self)
+        }
     }
     
     func showMessage(msg: String) {
-        labelError.text = msg
+        DispatchQueue.main.async {
+            self.labelError.text = msg
+        }
     }
 }
