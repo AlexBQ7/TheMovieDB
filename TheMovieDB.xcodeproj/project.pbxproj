@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D4DF5A428A4B784008651BC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4DF5A328A4B784008651BC /* Utils.swift */; };
 		4DE9F6E228A484D90023BDB6 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9F6E128A484D90023BDB6 /* APIProvider.swift */; };
 		4DE9F6E428A485B90023BDB6 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9F6E328A485B90023BDB6 /* LoginPresenter.swift */; };
 		4DE9F6E628A48AA10023BDB6 /* RequestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9F6E528A48AA10023BDB6 /* RequestToken.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D4DF5A328A4B784008651BC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4DE9F6E128A484D90023BDB6 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		4DE9F6E328A485B90023BDB6 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		4DE9F6E528A48AA10023BDB6 /* RequestToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToken.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D4DF5A228A4B771008651BC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4D4DF5A328A4B784008651BC /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		4DE9F6DD28A4847D0023BDB6 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		A9FC1F8028A41B7B00067604 /* TheMovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				4D4DF5A228A4B771008651BC /* Utils */,
 				4DE9F6E028A484A50023BDB6 /* APIProvider */,
 				4DE9F6DF28A484920023BDB6 /* Views */,
 				4DE9F6DE28A4848A0023BDB6 /* Models */,
@@ -206,6 +217,7 @@
 				4DE9F6F428A4A9140023BDB6 /* Movie.swift in Sources */,
 				4DE9F6E628A48AA10023BDB6 /* RequestToken.swift in Sources */,
 				4DE9F6E828A49DCC0023BDB6 /* HomeViewController.swift in Sources */,
+				4D4DF5A428A4B784008651BC /* Utils.swift in Sources */,
 				A9FC1F8228A41B7B00067604 /* AppDelegate.swift in Sources */,
 				4DE9F6E228A484D90023BDB6 /* APIProvider.swift in Sources */,
 				4DE9F6EA28A4A16C0023BDB6 /* ProfileViewController.swift in Sources */,

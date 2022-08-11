@@ -143,7 +143,7 @@
                                             </segmentedControl>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Bw-fl-QAk">
                                                 <rect key="frame" x="20" y="71" width="280" height="433"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hiv-n8-seY">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -197,6 +197,8 @@
                     <navigationItem key="navigationItem" id="ymI-6Y-Sdi"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="categories" destination="0oa-gw-Kak" id="EGT-VY-Jf6"/>
+                        <outlet property="moviesCollection" destination="4Bw-fl-QAk" id="QKm-A3-P0S"/>
                         <segue destination="gI8-pX-yQs" kind="popoverPresentation" identifier="profileSegue" popoverAnchorView="RCY-H5-xdm" id="Apd-bb-q67">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -337,10 +339,10 @@
         <image name="avatar" width="112.5" height="112.5"/>
         <image name="cinema" width="112.5" height="112.5"/>
         <namedColor name="bg_movie_card">
-            <color red="0.109803915" green="0.15294116739999999" blue="0.1725490093" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.10999999940395355" green="0.15299999713897705" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="green_color">
-            <color red="0.4941176176" green="0.8078432083" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.49399998784065247" green="0.80800002813339233" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
