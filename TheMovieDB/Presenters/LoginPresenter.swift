@@ -2,7 +2,7 @@
 //  LoginPresenter.swift
 //  TheMovieDB
 //
-//  Created by David Alejandro Ruiz Hernandez on 10/08/22.
+//  Created by Alejandro Barreto on 10/08/22.
 //
 
 import Foundation
@@ -26,7 +26,7 @@ class loginPresenter {
     }
     
     public func login(username: String, password: String) {
-        APIProvider.shared.login(username: username, password: password) {
+        /*APIProvider.shared.login(username: username, password: password) {
             response in
             if response.success {
                 UserDefaults.standard.set(username, forKey: "username")
@@ -38,8 +38,8 @@ class loginPresenter {
         } failure: { error in
             //Show Alert
             print(error ?? "Error")
-        }
-        //createSession()
+        }*/
+        createSession()
     }
     
     public func createSession() {

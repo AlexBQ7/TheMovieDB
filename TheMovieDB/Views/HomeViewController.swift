@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     private var movies = [Movie]()
     private var shows = [TVShow]()
     private let widthScreen = UIScreen.main.bounds.width
+    private var selected = 0
     @IBOutlet weak var categories: UISegmentedControl!
     @IBOutlet weak var moviesCollection: UICollectionView!
     
@@ -57,6 +58,21 @@ class HomeViewController: UIViewController {
             break
         default:
             break
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "movieDetailsSegue" {
+            let vc = segue.destination as? MovieDetailsViewController
+            switch categories.selectedSegmentIndex {
+            case 0...1:
+                vc?.movie = movies[selected]
+            case 2...3:
+                vc?.show = shows[selected]
+                break
+            default:
+                break
+            }
         }
     }
     
@@ -116,7 +132,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell?.overview.text = movies[indexPath.row].overview
             cell?.rating.text = "\(movies[indexPath.row].vote_average)"
             cell?.release_date.text = movies[indexPath.row].release_date
-            cell?.cover_image.load(url: URL(string: "\(APIProvider.shared.base_url)\(movies[indexPath.row].poster_path!)")!)
+            cell?.cover_image.load(url: URL(string: "\(APIProvider.shared.images_url)\(movies[indexPath.row].poster_path!)")!)
             print("Movie: \(APIProvider.shared.images_url)\(movies[indexPath.row].poster_path!)")
         case 2...3:
             cell?.title.text = shows[indexPath.row].name
@@ -129,5 +145,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selected = indexPath.row
+        performSegue(withIdentifier: "movieDetailsSegue", sender: self)
     }
 }

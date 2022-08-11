@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TheMovieDB
 //
-//  Created by Alejandro on 10/08/22.
+//  Created by Alejandro Barreto on 10/08/22.
 //
 
 import UIKit

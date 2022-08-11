@@ -213,10 +213,10 @@
             </objects>
             <point key="canvasLocation" x="1308" y="197"/>
         </scene>
-        <!--View Controller-->
+        <!--Movie Details View Controller-->
         <scene sceneID="GeW-cf-Ick">
             <objects>
-                <viewController id="tj2-Ot-jSa" sceneMemberID="viewController">
+                <viewController id="tj2-Ot-jSa" customClass="MovieDetailsViewController" customModule="TheMovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tTq-K0-8EF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,6 +320,9 @@
                                                 <color key="tintColor" red="0.18862429259999999" green="0.59524875880000006" blue="0.14773342010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" backgroundImage="star" catalog="system"/>
+                                                <connections>
+                                                    <action selector="favoriteAction:" destination="tj2-Ot-jSa" eventType="touchUpInside" id="cX5-co-SWe"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNU-H5-5lN">
                                                 <rect key="frame" x="20" y="22.5" width="40" height="35"/>
@@ -330,6 +333,9 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" backgroundImage="arrow.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="backAction:" destination="tj2-Ot-jSa" eventType="touchUpInside" id="rFw-zf-w5H"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -396,6 +402,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="cwx-dG-QsY"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="date_release" destination="II3-u3-02A" id="YZ6-94-Khi"/>
+                        <outlet property="language" destination="RLP-7h-J5I" id="g1m-wb-L9b"/>
+                        <outlet property="movieTitle" destination="1bF-4d-HxI" id="A33-BS-hZR"/>
+                        <outlet property="overview" destination="1gA-W9-DqS" id="xqs-TW-raE"/>
+                        <outlet property="posterMovie" destination="ex3-HP-hh0" id="H8A-Ah-bfX"/>
+                        <outlet property="rating" destination="Oah-rx-OMe" id="QX7-kl-DS4"/>
+                        <outlet property="total_rates" destination="Rfl-zM-7Gm" id="AVV-cg-BPM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXc-5I-tSV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -441,7 +456,7 @@
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f9R-li-8cp">
                                                 <rect key="frame" x="20" y="291" width="280" height="217"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Sy-KR-OUi">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -506,6 +521,10 @@
                             <constraint firstItem="FMp-gy-A6m" firstAttribute="leading" secondItem="L3s-yy-Crn" secondAttribute="leading" id="l7f-80-D1v"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="favoriteCollection" destination="f9R-li-8cp" id="1ed-OG-pMa"/>
+                        <outlet property="username" destination="eb4-Zt-sis" id="gUr-ar-MQj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqa-FG-tuf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
