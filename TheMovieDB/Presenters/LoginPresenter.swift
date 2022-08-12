@@ -26,8 +26,9 @@ class loginPresenter {
     }
     
     public func login(username: String, password: String) {
-        /*APIProvider.shared.login(username: username, password: password) {
+        APIProvider.shared.login(username: username, password: password) {
             response in
+            print("Respuesta login: \(response)")
             if response.success {
                 UserDefaults.standard.set(username, forKey: "username")
                 UserDefaults.standard.synchronize()
@@ -38,8 +39,8 @@ class loginPresenter {
         } failure: { error in
             //Show Alert
             print(error ?? "Error")
-        }*/
-        createSession()
+        }
+        //createSession()
     }
     
     public func createSession() {

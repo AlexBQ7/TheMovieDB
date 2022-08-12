@@ -13,12 +13,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var favoriteCollection: UICollectionView!
     private let presenter = FavoritePresenter()
     private var favorites = [MovieEntity]()
+    private let widthScreen = UIScreen.main.bounds.width
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        username.text = "@\(UserDefaults.standard.string(forKey: "username"))"
+        username.text = "@\(UserDefaults.standard.string(forKey: "username") ?? "username")"
         favoriteCollection.delegate = self
         favoriteCollection.dataSource = self
+        favoriteCollection.register(UINib(nibName: "MovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
         self.presenter.setViewDelegate(delegate: self)
         presenter.getFavorites()
     }
@@ -35,7 +37,7 @@ extension ProfileViewController: FavoritePresenterDelegate {
     }
 }
 
-extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favorites.count
     }
@@ -50,5 +52,11 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell!
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (widthScreen - 60)/2, height: 350)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
 }

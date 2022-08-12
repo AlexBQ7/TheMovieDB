@@ -108,13 +108,15 @@ final class APIProvider {
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
             return
         }
-        print(parameters)
+        print(httpBody)
         request.httpBody = httpBody
         print(request)
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            print(response)
             guard let data = data, error == nil else {
                 return
             }
+            print(String(data: data, encoding: .utf8)!)
             do {
                 let response = try JSONDecoder().decode(TokenRequest.self, from: data)
                 print(response)
@@ -173,6 +175,41 @@ final class APIProvider {
             }
         }
         task.resume()
+    }
+    
+    func movieDetails(id: Int, success: @escaping (_ response: [String:Any]?) -> (), failure: @escaping (_ error: String?) -> ()) {
+        guard let url = URL(string: "\(base_url)/movie/\(id)?api_key=\(token)") else { return }
+        let tast = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            do {
+                let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
+                success(response)
+            } catch {
+                failure(error.localizedDescription)
+            }
+            
+        }
+        tast.resume()
+    }
+    
+    func tvshowDetails(id: Int, success: @escaping (_ response: [String:Any]?) -> (), failure: @escaping (_ error: String?) -> ()) {
+        guard let url = URL(string: "\(base_url)/tv/\(id)?api_key=\(token)") else { return }
+        let tast = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            do {
+                //let response = try JSONDecoder().decode(TVDetails.self, from: data)
+                let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
+                success(response)
+            } catch {
+                failure(error.localizedDescription)
+            }
+            
+        }
+        tast.resume()
     }
     
 }

@@ -65,11 +65,13 @@ class FavoritePresenter {
         }
     }
     
-    public func deleteFavorite(movie: MovieEntity) {
+    public func deleteFavorite(movie: MovieEntity, reload: Bool) {
         context.delete(movie)
         do {
             try context.save()
-            getFavorites()
+            if reload {
+                getFavorites()
+            }
         } catch {
             print("Error")
         }

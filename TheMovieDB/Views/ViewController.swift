@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.setViewDelegate(delegate: self)
-        if UserDefaults.standard.string(forKey: "session") != nil {
+        if let session = UserDefaults.standard.string(forKey: "session"), !session.isEmpty {
             performSegue(withIdentifier: "homeSegue", sender: self)
         }
     }

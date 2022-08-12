@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "TV Shows"
+        navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.backgroundColor = .gray
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(menu))
         navigationItem.rightBarButtonItem?.tintColor = .white
@@ -66,9 +67,11 @@ class HomeViewController: UIViewController {
             let vc = segue.destination as? MovieDetailsViewController
             switch categories.selectedSegmentIndex {
             case 0...1:
-                vc?.movie = movies[selected]
+                vc?.id = movies[selected].id
+                vc?.type = .movie
             case 2...3:
-                vc?.show = shows[selected]
+                vc?.id = shows[selected].id
+                vc?.type = .tvshow
                 break
             default:
                 break
@@ -133,7 +136,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell?.rating.text = "\(movies[indexPath.row].vote_average)"
             cell?.release_date.text = movies[indexPath.row].release_date
             cell?.cover_image.load(url: URL(string: "\(APIProvider.shared.images_url)\(movies[indexPath.row].poster_path!)")!)
-            print("Movie: \(APIProvider.shared.images_url)\(movies[indexPath.row].poster_path!)")
         case 2...3:
             cell?.title.text = shows[indexPath.row].name
             cell?.overview.text = shows[indexPath.row].overview
